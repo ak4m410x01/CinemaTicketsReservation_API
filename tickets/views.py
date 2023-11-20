@@ -1,11 +1,12 @@
 from django.shortcuts import render
 from django.http.response import JsonResponse
+from tickets.models import *
 
 # Create your views here.
 
 
 # 1. Without RESTful and Without Model FBV
-def FBV_WithoutRESTfullAndWithoutModel(request):
+def FBV_WithoutRESTfulAndWithoutModel(request):
     guests = [
         {
             "id": 1,
@@ -25,3 +26,12 @@ def FBV_WithoutRESTfullAndWithoutModel(request):
         },
     ]
     return JsonResponse(data=guests, safe=False)
+
+
+# 2. Without RESTful and With Model FBV
+def FBV_WithoutRESTfulAndWithModel(request):
+    guests = Guest.objects.all()
+    response = {
+        "guests": list(guests.values()),
+    }
+    return JsonResponse(data=response)
