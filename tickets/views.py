@@ -1,6 +1,9 @@
 from django.shortcuts import render
 from django.http.response import JsonResponse
+from rest_framework.decorators import api_view
+from rest_framework.response import Response
 from tickets.models import *
+from tickets.serializers import *
 
 # Create your views here.
 
@@ -35,3 +38,12 @@ def FBV_WithoutRESTfulAndWithModel(request):
         "guests": list(guests.values()),
     }
     return JsonResponse(data=response)
+
+
+# 3. With RESTful and With Model List Guests FBV
+@api_view(["GET"])
+def FBV_WithRESTfulAndWithModelListGuests(request):
+    guests = Guest.objects.all()
+    serializer = GuestSerializer(guests, many=True)
+    return Response(serializer.data)
+
