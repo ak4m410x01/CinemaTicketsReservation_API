@@ -46,4 +46,3 @@ def FBV_WithRESTfulAndWithModelListGuests(request):
     guests = Guest.objects.all()
     serializer = GuestSerializer(guests, many=True)
     return Response(serializer.data)
-
