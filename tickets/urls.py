@@ -22,4 +22,10 @@ urlpatterns = [
         views.FBV_WithRESTfulAndWithModelListGuests,
         name="FBV_WithRESTfulAndWithModelListGuests",
     ),
+    # 4. With RESTful and With Model Create Guest FBV
+    path(
+        "FBV_WithRESTfulAndWithModelCreateGuest/",
+        views.FBV_WithRESTfulAndWithModelCreateGuest,
+        name="FBV_WithRESTfulAndWithModelCreateGuest",
+    ),
 ]
