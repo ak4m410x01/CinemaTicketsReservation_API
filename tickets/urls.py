@@ -40,4 +40,10 @@ urlpatterns = [
         views.fbv_withModel_withRESTful_updateGuest,
         name="fbv_withModel_withRESTful_updateGuest",
     ),
+    # 7. FBV With Model and With RESTful Delete Guest
+    path(
+        "fbv/withmodel/withrest/delete/guest/<int:pk>/",
+        views.fbv_withModel_withRESTful_deleteGuest,
+        name="fbv_withModel_withRESTful_deleteGuest",
+    ),
 ]

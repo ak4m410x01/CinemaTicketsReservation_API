@@ -70,7 +70,7 @@ def fbv_withModel_withRESTful_createGuest(request):
     return Response(serializer.data, status=status.HTTP_400_BAD_REQUEST)
 
 
-# 5. FBV With Model and With RESTful Update Guest
+# 6. FBV With Model and With RESTful Update Guest
 @api_view(["PUT"])
 def fbv_withModel_withRESTful_updateGuest(request, pk):
     try:
@@ -84,8 +84,9 @@ def fbv_withModel_withRESTful_updateGuest(request, pk):
     return Response(request.data, status=status.HTTP_400_BAD_REQUEST)
 
 
+# 7. FBV With Model and With RESTful Delete Guest
 @api_view(["DELETE"])
-def fbv_withModel_withRESTful_updateGuest(request, pk):
+def fbv_withModel_withRESTful_deleteGuest(request, pk):
     try:
         guest = Guest.objects.get(pk=pk)
     except Guest.DoesNotExist:
