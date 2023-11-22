@@ -46,4 +46,16 @@ urlpatterns = [
         views.fbv_withModel_withRESTful_deleteGuest,
         name="fbv_withModel_withRESTful_deleteGuest",
     ),
+    # 8. CBV With Model and With RESTful List And Create Guests
+    path(
+        "cbv/withmodel/withrest/list/guests/",
+        views.CBVWithModelWithRESTfulListAndCreateGuest.as_view(),
+        name="CBVWithModelWithRESTfulListAndCreateGuest",
+    ),
+    # 9. CBV With Model and With RESTful Get And Update And Delete Guest
+    path(
+        "cbv/withmodel/withrest/guest/<int:pk>/",
+        views.CBVWithModelWithRESTfulGetAndUpdateAndDeleteGuest.as_view(),
+        name="CBVWithModelWithRESTfulGetAndUpdateAndDeleteGuest",
+    ),
 ]
