@@ -57,3 +57,11 @@ def FBV_WithRESTfulAndWithModelCreateGuest(request):
         serializer.save()
         return Response(serializer.data, status=status.HTTP_201_CREATED)
     return Response(serializer.data, status=status.HTTP_400_BAD_REQUEST)
+
+
+# 5. With RESTful and With Model GET Guest FBV
+@api_view(["GET"])
+def FBV_WithRESTfulAndWithModelGetGuest(request, pk):
+    guest = Guest.objects.get(pk=pk)
+    serializer = GuestSerializer(guest)
+    return Response(serializer.data, status=status.HTTP_200_OK)
