@@ -58,4 +58,16 @@ urlpatterns = [
         views.CBVWithModelWithRESTfulGetAndUpdateAndDeleteGuest.as_view(),
         name="CBVWithModelWithRESTfulGetAndUpdateAndDeleteGuest",
     ),
+    # 10. Mixins With Model and With RESTful List And Create Guest
+    path(
+        "mixins/withmodel/withrest/list/guests/",
+        views.MixinsWithModelWithRESTfulListAndCreateGuest.as_view(),
+        name="MixinsWithModelWithRESTfulListAndCreateGuest",
+    ),
+    # 11. Mixins With Model and With RESTful Get And Update And Delete Guest
+    path(
+        "mixins/withmodel/withrest/guest/<int:pk>/",
+        views.MixinsWithModelWithRESTfulGetAndUpdateAndDeleteGuest.as_view(),
+        name="MixinsWithModelWithRESTfulGetAndUpdateAndDeleteGuest",
+    ),
 ]

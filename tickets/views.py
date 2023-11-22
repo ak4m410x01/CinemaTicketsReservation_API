@@ -4,6 +4,7 @@ from rest_framework import status
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from rest_framework.views import APIView
+from rest_framework import generics, mixins
 from tickets.models import *
 from tickets.serializers import *
 
@@ -96,7 +97,7 @@ def fbv_withModel_withRESTful_deleteGuest(request, pk):
     return Response(status=status.HTTP_204_NO_CONTENT)
 
 
-# 8. FBV With Model and With RESTful List And Create Guest
+# 8. CBV With Model and With RESTful List And Create Guest
 class CBVWithModelWithRESTfulListAndCreateGuest(APIView):
     def get(self, request):
         guests = Guest.objects.all()
@@ -111,7 +112,7 @@ class CBVWithModelWithRESTfulListAndCreateGuest(APIView):
         return Response(serializer.data, status=status.HTTP_400_BAD_REQUEST)
 
 
-# 9. FBV With Model and With RESTful List And Create Guest
+# 9. CBV With Model and With RESTful Get And Update And Delete Guest
 class CBVWithModelWithRESTfulGetAndUpdateAndDeleteGuest(APIView):
     def get(self, request, pk):
         try:
@@ -139,3 +140,37 @@ class CBVWithModelWithRESTfulGetAndUpdateAndDeleteGuest(APIView):
             return Response(status=status.HTTP_404_NOT_FOUND)
         guest.delete()
         return Response(status=status.HTTP_204_NO_CONTENT)
+
+
+# 10. Mixins With Model and With RESTful List And Create Guest
+class MixinsWithModelWithRESTfulListAndCreateGuest(
+    mixins.ListModelMixin, mixins.CreateModelMixin, generics.GenericAPIView
+):
+    queryset = Guest.objects.all()
+    serializer_class = GuestSerializer
+
+    def get(self, request):
+        return self.list(request)
+
+    def post(self, request):
+        return self.create(request)
+
+
+# 11. Mixins With Model and With RESTful Get And Update And Delete Guest
+class MixinsWithModelWithRESTfulGetAndUpdateAndDeleteGuest(
+    mixins.RetrieveModelMixin,
+    mixins.UpdateModelMixin,
+    mixins.DestroyModelMixin,
+    generics.GenericAPIView,
+):
+    queryset = Guest.objects.all()
+    serializer_class = GuestSerializer
+
+    def get(self, request, pk):
+        return self.retrieve(request)
+
+    def put(self, request, pk):
+        return self.update(request)
+
+    def delete(self, request, pk):
+        return self.destroy(request)
