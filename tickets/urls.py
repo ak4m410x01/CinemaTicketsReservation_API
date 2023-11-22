@@ -4,34 +4,40 @@ from tickets import views
 app_name = "tickets"
 
 urlpatterns = [
-    # 1. Without RESTful and Without Model FBV
+    # 1. FBV Without Model and Without RESTful
     path(
-        "FBV_WithoutRESTfulAndWithoutModel/",
-        views.FBV_WithoutRESTfulAndWithoutModel,
-        name="FBV_WithoutRESTfulAndWithoutModel",
+        "fbv/withoutmodel/withoutrest/",
+        views.fbv_withoutModel_withoutRESTful,
+        name="fbv_withoutModel_withoutRESTful",
     ),
-    # 2. Without RESTful and With Model FBV
+    # 2. FBV With Model and Without RESTful
     path(
-        "FBV_WithoutRESTfulAndWithModel/",
-        views.FBV_WithoutRESTfulAndWithModel,
-        name="FBV_WithoutRESTfulAndWithModel",
+        "fbv/withmodel/withoutrest/",
+        views.fbv_withModel_withoutRESTful,
+        name="fbv_withModel_withoutRESTful",
     ),
-    # 3. With RESTful and With Model List Guests FBV
+    # 3. FBV With Model and With RESTful List Guests
     path(
-        "FBV_WithRESTfulAndWithModelListGuests/",
-        views.FBV_WithRESTfulAndWithModelListGuests,
-        name="FBV_WithRESTfulAndWithModelListGuests",
+        "fbv/withmodel/withrest/list/guests/",
+        views.fbv_withModel_withRESTful_listGuests,
+        name="fbv_withModel_withRESTful_listGuests",
     ),
-    # 4. With RESTful and With Model Create Guest FBV
+    # 4. FBV With Model and With RESTful List Guest
     path(
-        "FBV_WithRESTfulAndWithModelCreateGuest/",
-        views.FBV_WithRESTfulAndWithModelCreateGuest,
-        name="FBV_WithRESTfulAndWithModelCreateGuest",
+        "fbv/withmodel/withrest/list/guest/<int:pk>/",
+        views.fbv_withModel_withRESTful_listGuest,
+        name="fbv_withModel_withRESTful_listGuest",
     ),
-    # 5. With RESTful and With Model GET Guest FBV
+    # 5. FBV With Model and With RESTful Create Guest
     path(
-        "FBV_WithRESTfulAndWithModelGetGuest/<int:pk>/",
-        views.FBV_WithRESTfulAndWithModelGetGuest,
-        name="FBV_WithRESTfulAndWithModelGetGuest",
+        "fbv/withmodel/withrest/create/guest/",
+        views.fbv_withModel_withRESTful_createGuest,
+        name="fbv_withModel_withRESTful_createGuest",
+    ),
+    # 6. FBV With Model and With RESTful Update Guest
+    path(
+        "fbv/withmodel/withrest/update/guest/<int:pk>/",
+        views.fbv_withModel_withRESTful_updateGuest,
+        name="fbv_withModel_withRESTful_updateGuest",
     ),
 ]
