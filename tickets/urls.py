@@ -89,5 +89,8 @@ urlpatterns = [
         include(router.urls),
     ),
     # search guest by fn
-    path("fbv/search-guest", views.searchGuest),
+    path(
+        "fbv/search-guest",
+        views.searchGuest,
+    ),
 ]
