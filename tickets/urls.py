@@ -88,4 +88,6 @@ urlpatterns = [
         "viewsets/withmodel/withrest/",
         include(router.urls),
     ),
+    # search guest by fn
+    path("fbv/search-guest", views.searchGuest),
 ]

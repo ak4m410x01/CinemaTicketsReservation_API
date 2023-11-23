@@ -1,4 +1,5 @@
 from django.shortcuts import render
+from django.db.models import Q
 from django.http.response import JsonResponse
 from rest_framework import status
 from rest_framework.decorators import api_view
@@ -214,3 +215,15 @@ class MovieViewSet(viewsets.ModelViewSet):
 class ReservationViewSet(viewsets.ModelViewSet):
     queryset = Reservation.objects.all()
     serializer_class = ReservationSerializer
+
+
+# search guest
+@api_view(["GET"])
+def searchGuest(request):
+    guests = Guest.objects.filter(
+        Q(first_name__icontains=request.GET["name"])
+        | Q(middle_name__icontains=request.GET["name"])
+        | Q(last_name__icontains=request.GET["name"])
+    )
+    serializer = GuestSerializer(guests, many=True)
+    return Response(serializer.data, status=status.HTTP_200_OK)

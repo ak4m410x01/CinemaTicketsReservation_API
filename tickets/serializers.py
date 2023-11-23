@@ -9,17 +9,19 @@ class MovieSerializer(serializers.ModelSerializer):
 
 
 class GuestSerializer(serializers.ModelSerializer):
+    full_name = serializers.SerializerMethodField()
     class Meta:
         model = Guest
         fields = [
             "pk",
-            "first_name",
-            "middle_name",
-            "last_name",
+            "full_name",
             "phone",
             "date_of_birth",
             "reservations",
         ]
+
+    def get_full_name(self, obj):
+        return f"{obj.first_name} {obj.middle_name} {obj.last_name}"
 
 
 class ReservationSerializer(serializers.ModelSerializer):
