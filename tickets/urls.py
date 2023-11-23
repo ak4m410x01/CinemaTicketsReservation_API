@@ -1,7 +1,14 @@
-from django.urls import path
+from django.urls import path, include
+from rest_framework.routers import DefaultRouter
 from tickets import views
 
 app_name = "tickets"
+
+router = DefaultRouter()
+router.register(
+    "guests/",
+    views.ViewsetsWithModelWithRESTfulListAndCreateAndGetAndUpdateAndDeleteGuest,
+)
 
 urlpatterns = [
     # 1. FBV Without Model and Without RESTful
@@ -81,5 +88,10 @@ urlpatterns = [
         "generics/withmodel/withrest/guest/<int:pk>/",
         views.GenericsWithModelWithRESTfulGetAndUpdateAndDeleteGuest.as_view(),
         name="GenericsWithModelWithRESTfulGetAndUpdateAndDeleteGuest",
+    ),
+    # 14. Viewsets With Model and With RESTful List, Create, Get, Update, and Delete Guest
+    path(
+        "viewsets/withmodel/withrest/",
+        include(router.urls),
     ),
 ]

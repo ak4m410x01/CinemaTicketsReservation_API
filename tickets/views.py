@@ -4,7 +4,7 @@ from rest_framework import status
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from rest_framework.views import APIView
-from rest_framework import generics, mixins
+from rest_framework import mixins, generics, viewsets
 from tickets.models import *
 from tickets.serializers import *
 
@@ -185,6 +185,14 @@ class GenericsWithModelWithRESTfulListAndCreateGuest(generics.ListCreateAPIView)
 # 13. Generics With Model and With RESTful Get And Update And Delete Guest
 class GenericsWithModelWithRESTfulGetAndUpdateAndDeleteGuest(
     generics.RetrieveUpdateDestroyAPIView
+):
+    queryset = Guest.objects.all()
+    serializer_class = GuestSerializer
+
+
+# 14. Viewsets With Model and With RESTful List, Create, Get, Update, and Delete Guest
+class ViewsetsWithModelWithRESTfulListAndCreateAndGetAndUpdateAndDeleteGuest(
+    viewsets.ModelViewSet
 ):
     queryset = Guest.objects.all()
     serializer_class = GuestSerializer
