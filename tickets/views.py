@@ -6,6 +6,8 @@ from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from rest_framework.views import APIView
 from rest_framework import mixins, generics, viewsets
+from rest_framework.permissions import IsAuthenticated
+from tickets.permissions import IsAuthor
 from tickets.models import *
 from tickets.serializers import *
 
@@ -228,7 +230,9 @@ def searchGuest(request):
     serializer = GuestSerializer(guests, many=True)
     return Response(serializer.data, status=status.HTTP_200_OK)
 
+
 # List all Posts
 class PostsViewSet(viewsets.ModelViewSet):
     queryset = Post.objects.all()
     serializer_class = PostSerializer
+    permission_classes = [IsAuthor]
