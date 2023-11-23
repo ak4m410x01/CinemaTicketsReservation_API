@@ -196,3 +196,21 @@ class ViewsetsWithModelWithRESTfulListAndCreateAndGetAndUpdateAndDeleteGuest(
 ):
     queryset = Guest.objects.all()
     serializer_class = GuestSerializer
+
+
+# Implement CRUD on Guest Model using Viewsets
+class GuestViewSet(viewsets.ModelViewSet):
+    queryset = Guest.objects.all()
+    serializer_class = GuestSerializer
+
+
+# Implement CRUD on Movie Model using Viewsets
+class MovieViewSet(viewsets.ModelViewSet):
+    queryset = Movie.objects.all()
+    serializer_class = MovieSerializer
+
+
+# Implement CRUD on Reservation Model using Viewsets
+class ReservationViewSet(viewsets.ModelViewSet):
+    queryset = Reservation.objects.all()
+    serializer_class = ReservationSerializer

@@ -1,14 +1,8 @@
 from django.urls import path, include
-from rest_framework.routers import DefaultRouter
 from tickets import views
+from tickets.routers import router
 
 app_name = "tickets"
-
-router = DefaultRouter()
-router.register(
-    "guests/",
-    views.ViewsetsWithModelWithRESTfulListAndCreateAndGetAndUpdateAndDeleteGuest,
-)
 
 urlpatterns = [
     # 1. FBV Without Model and Without RESTful
