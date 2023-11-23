@@ -93,4 +93,8 @@ urlpatterns = [
         "fbv/search-guest",
         views.searchGuest,
     ),
+    path(
+        "viewsets/",
+        include(router.urls),
+    ),
 ]

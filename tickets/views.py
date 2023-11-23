@@ -227,3 +227,8 @@ def searchGuest(request):
     )
     serializer = GuestSerializer(guests, many=True)
     return Response(serializer.data, status=status.HTTP_200_OK)
+
+# List all Posts
+class PostsViewSet(viewsets.ModelViewSet):
+    queryset = Post.objects.all()
+    serializer_class = PostSerializer

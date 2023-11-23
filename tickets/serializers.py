@@ -10,6 +10,7 @@ class MovieSerializer(serializers.ModelSerializer):
 
 class GuestSerializer(serializers.ModelSerializer):
     full_name = serializers.SerializerMethodField()
+
     class Meta:
         model = Guest
         fields = [
@@ -28,3 +29,13 @@ class ReservationSerializer(serializers.ModelSerializer):
     class Meta:
         model = Reservation
         fields = "__all__"
+
+
+class PostSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Post
+        fields = [
+            "title",
+            "body",
+            "author",
+        ]

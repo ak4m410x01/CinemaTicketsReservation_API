@@ -10,3 +10,4 @@ router.register(
 router.register("guests", views.GuestViewSet)
 router.register("movies", views.MovieViewSet)
 router.register("reservations", views.ReservationViewSet)
+router.register("posts", views.PostsViewSet)

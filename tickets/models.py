@@ -38,10 +38,13 @@ class Reservation(models.Model):
         return f"{self.movie}:{self.guest}"
 
 
-class post(models.Model):
-    author = models.ForeignKey(User, on_delete=models.CASCADE)
+class Post(models.Model):
+    author = models.ForeignKey(User, on_delete=models.CASCADE, related_name="posts")
     title = models.CharField(max_length=30)
     body = models.TextField(max_length=50_000)
+
+    def __str__(self):
+        return str(self.title)
 
 
 @receiver(post_save, sender=settings.AUTH_USER_MODEL)
