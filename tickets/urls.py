@@ -70,4 +70,16 @@ urlpatterns = [
         views.MixinsWithModelWithRESTfulGetAndUpdateAndDeleteGuest.as_view(),
         name="MixinsWithModelWithRESTfulGetAndUpdateAndDeleteGuest",
     ),
+    # 12. Generics With Model and With RESTful List And Create Guest
+    path(
+        "generics/withmodel/withrest/list/guests/",
+        views.GenericsWithModelWithRESTfulListAndCreateGuest.as_view(),
+        name="GenericsWithModelWithRESTfulListAndCreateGuest",
+    ),
+    # 13. Generics With Model and With RESTful Get And Update And Delete Guest
+    path(
+        "generics/withmodel/withrest/guest/<int:pk>/",
+        views.GenericsWithModelWithRESTfulGetAndUpdateAndDeleteGuest.as_view(),
+        name="GenericsWithModelWithRESTfulGetAndUpdateAndDeleteGuest",
+    ),
 ]

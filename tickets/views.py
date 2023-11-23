@@ -174,3 +174,17 @@ class MixinsWithModelWithRESTfulGetAndUpdateAndDeleteGuest(
 
     def delete(self, request, pk):
         return self.destroy(request)
+
+
+# 12. Generics With Model and With RESTful List And Create Guest
+class GenericsWithModelWithRESTfulListAndCreateGuest(generics.ListCreateAPIView):
+    queryset = Guest.objects.all()
+    serializer_class = GuestSerializer
+
+
+# 13. Generics With Model and With RESTful Get And Update And Delete Guest
+class GenericsWithModelWithRESTfulGetAndUpdateAndDeleteGuest(
+    generics.RetrieveUpdateDestroyAPIView
+):
+    queryset = Guest.objects.all()
+    serializer_class = GuestSerializer
